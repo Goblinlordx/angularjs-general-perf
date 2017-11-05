@@ -1,8 +1,7 @@
-const app = angular.module('app', []);
-
 const TEST_PER_SET = 2000;
-const TEST_ARR = Array.apply(null, { length: TEST_PER_SET }).map((_, i) => i);
 const TEST_VAR = 'test';
+
+const app = angular.module('app', []);
 const tests = [
   {
     desc: 'baseline',
@@ -62,7 +61,7 @@ tests.forEach((test, i) =>
   app.component(
     `test${i}`,
     Object.assign({}, test, {
-      template: TEST_ARR.reduce(a => a + test.template, ''),
+      template: test.template.repeat(TEST_PER_SET),
     })
   )
 );
